@@ -1,0 +1,21 @@
+body{
+	background: #002B49;
+}
+.col-md-2{
+	text-align: center;
+	padding: 5px auto;
+	padding-top: 50px;
+}
+.col-md-1{
+        text-align: center;
+        padding: 5px auto;
+	padding-top: 50px;
+}
+.col-md-4{
+        text-align: center;
+        padding: 5px auto;
+}
+.well{
+	text-align: center;
+	background-color: #EDF0F3;
+}
