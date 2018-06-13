@@ -3,12 +3,9 @@ package com.nm.jaguar.shark.mongo.data;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import org.bson.types.ObjectId;
-import org.mongodb.morphia.annotations.Entity;
-
-@Entity
 public class LunchMatch extends BaseEntity{
 	
+	private String lanId;
 	private String firstName;
 	private String lastName;
 	private String email;
@@ -18,11 +15,12 @@ public class LunchMatch extends BaseEntity{
 	private int grouping;
 	private List<LocalDateTime> dates;
 	
-	public ObjectId getId() {
-		return id;
+	
+	public String getLandId() {
+		return lanId;
 	}
-	public void setId(ObjectId id) {
-		this.id = id;
+	public void setLanId(String lanId) {
+		this.lanId = lanId;
 	}
 	public String getFirstName() {
 		return firstName;
@@ -81,7 +79,7 @@ public class LunchMatch extends BaseEntity{
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + grouping;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((lanId == null) ? 0 : lanId.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + location;
 		result = prime * result + ((teamName == null) ? 0 : teamName.hashCode());
@@ -139,7 +137,7 @@ public class LunchMatch extends BaseEntity{
 	}
 	@Override
 	public String toString() {
-		return "LunchMatch [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+		return "LunchMatch [lanId=" + lanId + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
 				+ ", department=" + department + ", teamName=" + teamName + ", location=" + location + ", grouping="
 				+ grouping + ", dates=" + dates + "]";
 	}
