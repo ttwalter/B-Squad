@@ -85,9 +85,14 @@ dependencies {
 	// Spring Boot
 	compile('org.springframework.boot:spring-boot-starter')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+	compile('org.springframework.boot:spring-boot-starter-web')
 	
 	//Mongo DB
 	compile group: 'org.mongodb', name: 'mongo-java-driver', version: '3.7.1'
+	
+	// Java Common
+  	compile("org.apache.commons:commons-lang3:${apacheCommonsVersion}")
+  
 	
 }
 
