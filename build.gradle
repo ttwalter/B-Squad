@@ -3,20 +3,15 @@ buildscript {
 		maven {
 			url 'https://repo1.maven.org/maven2'
 		}
-		dependencies {
-	        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.2.RELEASE")
-	    }
 	}
 	ext {
     // Get latest of major versions (#.+)
 	
 	  // Spring
-    springBootVersion = '2.0.2.RELEASE'
-    springframeworkVersion = '5.0.7.RELEASE'
-    springIntegrationVersion = '5.0.5.RELEASE'
-    springConfig = '2.0.2.RELEASE'
-    springWeb = '5.0.7.RELEASE'
-    springExpression = '5.0.7.RELEASE'
+    springBootVersion = '1.5.10.RELEASE'
+    springframeworkVersion = '5.0.4.RELEASE'
+    springIntegrationVersion = '5.0.4.RELEASE'
+    springConfig = '2.0.1.RELEASE'
     
     // Java Common
     apacheCommonsVersion = '3.7'
@@ -38,9 +33,6 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
-apply plugin: 'idea'
-apply plugin: 'org.springframework.boot'
-apply plugin: 'io.spring.dependency-management'
 
 
 
@@ -83,8 +75,7 @@ sourceSets {
 dependencies {
 
 	testCompile("junit:junit:${junitVersion}")
-	//compile fileTree(dir: 'lib', include: ['*.jar'])
- 
+
   	// Logger
   	compile("ch.qos.logback:logback-classic:${logbackVersion}")
 	
@@ -92,45 +83,20 @@ dependencies {
   	compile("org.apache.commons:commons-lang3:${apacheCommonsVersion}")
   
 	// Spring Boot
-	compile("org.springframework.boot:spring-boot-starter:${springBootVersion}")
-	compile("org.springframework.boot:spring-boot-test:${springBootVersion}")
-	compile("org.springframework.boot:spring-boot-starter-web:2.0.2.RELEASE")
-	
-	// Spring Beans
-	compile("org.springframework:spring-beans:5.0.7.RELEASE")
-	
-	//Spring Core
-	// https://mvnrepository.com/artifact/org.springframework/spring-core
-	compile("org.springframework:spring-core:5.0.7.RELEASE")
-	
-	// Spring Web
-	compile("org.springframework:spring-web:5.0.7.RELEASE")
-	//compile("com.google.code.gson:gson:2..6.2")
-	
-    
-	
-
+	compile('org.springframework.boot:spring-boot-starter')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
 	
 	//Mongo DB
-	// https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver
 	compile group: 'org.mongodb', name: 'mongo-java-driver', version: '3.7.1'
-
-	// Spring Framework
-	compile("org.springframework:spring-jms:${springframeworkVersion}")
-	compile("org.springframework.integration:spring-integration-core:${springIntegrationVersion}")
-
-	testCompile('org.springframework.boot:spring-boot-starter-test:2.0.2.RELEASE')
 	
 }
 
-bootJar {
-    baseName ='JaguarSharkApplication'
-    version '0.1.0'
+bootRepackage {
+    mainClass = 'com.nm.jaguar.shark.JaguarSharkApplication'
 }
 
 
-//springBoot
-//{
-//	executable = true
-//}
-
+springBoot
+{
+	executable = true
+}
