@@ -15,3 +15,7 @@ body{
         text-align: center;
         padding: 5px auto;
 }
+.well{
+	text-align: center;
+	background-color: #EDF0F3;
+}
