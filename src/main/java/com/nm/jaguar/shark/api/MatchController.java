@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.collections.map.HashedMap;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,27 +15,36 @@ import org.springframework.web.bind.annotation.RestController;
 import com.nm.jaguar.shark.mongo.data.ExistingLunchMatches;
 import com.nm.jaguar.shark.mongo.data.LunchMatch;
 
-
 @RestController
 public class MatchController {
-	
-	//@RequestMapping(value="/FindMatches", method=RequestMethod.POST)
-	
-	@RequestMapping(value="/FindExistingMatches", method=RequestMethod.GET)
-	public ExistingLunchMatches findExistingMatches(@RequestParam("lanID") String landId) {
+
+	@RequestMapping(value="/GetUserInfo", method=RequestMethod.GET)
+	public LunchMatch getUserInfo(@RequestParam("lanID") String lanID) {
+		return populateUserInfo();
+	}
+
+	@RequestMapping(value = "/FindMatches", method = RequestMethod.POST)
+	public ExistingLunchMatches findMatches(@RequestBody MatchRequest requestBody,
+			@RequestParam("lanID") String landID) {
+		System.out.println("Lan ID: " + requestBody.getLanID());
+		System.out.println("First Name: " + requestBody.getFirstName());
+		System.out.println("Last Name: " + requestBody.getLastName());
 		return populateMockMatches();
 	}
-	
-	private ExistingLunchMatches populateMockMatches() {
-		ExistingLunchMatches existingMatches = new ExistingLunchMatches();
-		
+
+	@RequestMapping(value = "/FindExistingMatches", method = RequestMethod.GET)
+	public ExistingLunchMatches findExistingMatches(@RequestParam("lanID") String lanID) {
+		return populateMockMatches();
+	}
+
+	private LunchMatch populateUserInfo() {
 		// Current User Info
 		List<LocalDateTime> dates = new ArrayList<>();
 		LocalDateTime current = LocalDateTime.now();
 		LocalDateTime tomorrow = current.plusDays(1);
 		dates.add(current);
 		dates.add(tomorrow);
-		
+
 		LunchMatch currentUser = new LunchMatch();
 		currentUser.setFirstName("Bill");
 		currentUser.setLastName("Murray");
@@ -45,6 +55,29 @@ public class MatchController {
 		currentUser.setTeamName("B-Squad");
 		currentUser.setDates(dates);
 		
+		return currentUser;
+	}
+
+	private ExistingLunchMatches populateMockMatches() {
+		ExistingLunchMatches existingMatches = new ExistingLunchMatches();
+
+		// Current User Info
+		List<LocalDateTime> dates = new ArrayList<>();
+		LocalDateTime current = LocalDateTime.now();
+		LocalDateTime tomorrow = current.plusDays(1);
+		dates.add(current);
+		dates.add(tomorrow);
+
+		LunchMatch currentUser = new LunchMatch();
+		currentUser.setFirstName("Bill");
+		currentUser.setLastName("Murray");
+		currentUser.setLocation(1);
+		currentUser.setDepartment("Digital Field Solutions");
+		currentUser.setEmail("BillyBoy@yopmail.com");
+		currentUser.setGrouping(1);
+		currentUser.setTeamName("B-Squad");
+		currentUser.setDates(dates);
+
 		// Match 1 Info
 		List<LocalDateTime> match1Dates = new ArrayList<>();
 		match1Dates.add(current);
@@ -57,7 +90,7 @@ public class MatchController {
 		match1.setGrouping(1);
 		match1.setTeamName("B-Squad");
 		match1.setDates(match1Dates);
-		
+
 		// Match 2 Info
 		List<LocalDateTime> match2Dates = new ArrayList<>();
 		match2Dates.add(tomorrow);
@@ -70,7 +103,7 @@ public class MatchController {
 		match2.setGrouping(1);
 		match2.setTeamName("B-Squad");
 		match2.setDates(match2Dates);
-		
+
 		// Matches Map
 		Map<LocalDateTime, List<LunchMatch>> matches = new HashedMap();
 		List<LunchMatch> day1Matches = new ArrayList<>();
@@ -82,9 +115,9 @@ public class MatchController {
 		existingMatches.setCurrentUserInfo(currentUser);
 		existingMatches.setMatchesByDate(matches);
 		existingMatches.setLanID("mur1111");
-		
+
 		return existingMatches;
-		
+
 	}
 
 }
