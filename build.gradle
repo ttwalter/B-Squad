@@ -75,8 +75,7 @@ sourceSets {
 dependencies {
 
 	testCompile("junit:junit:${junitVersion}")
-	//compile fileTree(dir: 'lib', include: ['*.jar'])
- 
+
   	// Logger
   	compile("ch.qos.logback:logback-classic:${logbackVersion}")
 	
@@ -84,20 +83,11 @@ dependencies {
   	compile("org.apache.commons:commons-lang3:${apacheCommonsVersion}")
   
 	// Spring Boot
-	compile("org.springframework.boot:spring-boot-starter:${springBootVersion}")
-	compile("org.springframework.boot:spring-boot-test:${springBootVersion}")
-	
-
+	compile('org.springframework.boot:spring-boot-starter')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
 	
 	//Mongo DB
-	// https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver
 	compile group: 'org.mongodb', name: 'mongo-java-driver', version: '3.7.1'
-
-	// Spring Framework
-	compile("org.springframework:spring-jms:${springframeworkVersion}")
-	compile("org.springframework.integration:spring-integration-core:${springIntegrationVersion}")
-
-	
 	
 }
 

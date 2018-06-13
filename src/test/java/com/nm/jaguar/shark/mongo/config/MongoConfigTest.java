@@ -1,35 +1,47 @@
 package com.nm.jaguar.shark.mongo.config;
 
+import static org.junit.Assert.assertNotNull;
+
 import java.time.LocalDate;
-import java.time.Month;
+import java.util.List;
 
+import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.nm.jaguar.shark.JaguarSharkApplication;
+import com.nm.jaguar.shark.mongo.data.LunchMatch;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest(classes = JaguarSharkApplication.class)
 public class MongoConfigTest {
-	
-	
-	//@Test
-	public void mongoConfigTest() {
 
-		MongoLunchConfiguration config = new MongoLunchConfiguration();
+	@Autowired
+	MongoConfiguration mongoConfig;
 
-		System.out.println(config.getLunchMatchByLanId("ZIS123"));
-	}
-	
 	@Test
-	public void mongoConfigTest2() {
+	public void getMatchByLanId() {
 
-		MongoLunchConfiguration config = new MongoLunchConfiguration();
+		LunchMatch match = mongoConfig.getLunchMatchByLanId("ZIS123");
 
-		String dateStr = "2016-06-22";
+		System.out.println("getMatchByLanId: " + match);
 
-        LocalDate date = LocalDate.parse(dateStr);
-
-		
-		System.out.println("---->" + config.getLunchMatchesByDate(date));
-				
+		assertNotNull("Query did not return any results: ", match);
 	}
 
+	@Test
+	public void getMatchesByDateTest() {
 
+		String dateStr = "2016-06-18";
+		LocalDate date = LocalDate.parse(dateStr);
+
+		List<LunchMatch> matches = mongoConfig.getLunchMatchesByDate(date);
+
+		System.out.println("getMatchesByDateTest: " + matches);
+
+		Assert.assertNotEquals("Query did not return any results: ", 0, matches.size());
+	}
 }
