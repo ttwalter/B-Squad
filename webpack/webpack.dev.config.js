@@ -1,9 +1,11 @@
 var webpack = require('webpack');
 var path = require('path');
 
+var parentDir = path.join(__dirname, '../');
+
 module.exports = {
 	entry: [
-		path.join(__dirname, '../index.js')
+		path.join(B-Squad, '../index.js')
 	],
 	module: {
 		loaders: [{
@@ -17,11 +19,12 @@ module.exports = {
 		]
 	},
 	output: {
-		path:__dirname + '/dist',
+		path: B-Squad + '/dist',
 		filename: 'bundle.js'
 	},
 	devServer: {
-		contentBase: __dirname + '/dist',
+		inline: false,
+		contentBase: B-Squad,
 		historyApiFallback: true
 	}
 }
