@@ -14,7 +14,7 @@
     <div class="row">
 	<div class="col-md-2 col-md-offset-4">
 		LanID:
-                <input type="text" name="lanID">
+                <input type="text" name="lanID" id="lanID">
 	</div>
 	<div class="col-md-2">
 		<input type="submit" value="Look-Up" onclick="lookup()">
@@ -65,18 +65,6 @@
 	</div>
 </div>
 
-<script>
-function lookup() {
-    	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function(){
-		if(this.readyState == 4 && this.status == 200){
-			document.getElementById("firstname").innerHTML = this.responseText;
-		}
-	};
-    	xhttp.open("GET", "/FindExistingMatches?lanID="+lanID, true);
-    	xhttp.send();
-    	var response = JSON.parse(xhttp.responseText);
-}
-</script>
+<script src=src/MatchRetriever.js></script>
 </body>
 </html>
