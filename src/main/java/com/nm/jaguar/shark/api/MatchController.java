@@ -2,10 +2,10 @@ package com.nm.jaguar.shark.api;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.collections.map.HashedMap;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -105,7 +105,7 @@ public class MatchController {
 		match2.setDates(match2Dates);
 
 		// Matches Map
-		Map<LocalDateTime, List<LunchMatch>> matches = new HashedMap();
+		Map<LocalDateTime, List<LunchMatch>> matches = new HashMap<>();
 		List<LunchMatch> day1Matches = new ArrayList<>();
 		day1Matches.add(match1);
 		List<LunchMatch> day2Matches = new ArrayList<>();
