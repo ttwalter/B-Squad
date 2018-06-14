@@ -92,6 +92,8 @@ dependencies {
 	
 	// Java Common
   	compile("org.apache.commons:commons-lang3:${apacheCommonsVersion}")
+  	
+  	compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.9.5'
   
 	
 }

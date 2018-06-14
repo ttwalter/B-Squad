@@ -3,12 +3,18 @@ package com.nm.jaguar.shark.mongo.beans;
 import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
 import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
 
+import java.text.ParseException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
+
 import org.bson.codecs.configuration.CodecProvider;
 import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.codecs.pojo.PojoCodecProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.format.Formatter;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientSettings;
@@ -47,5 +53,22 @@ public class MongoBean {
 	@Bean(name = "mongoCollection")
 	public MongoCollection<LunchMatch> mongoCollection(@Autowired MongoDatabase mongoDatabase) {
 		return mongoDatabase.getCollection(COLLECTION, LunchMatch.class);
+	}
+	
+	@Bean
+	public Formatter<LocalDate> localDateFormatter() {
+	  return new Formatter<LocalDate>() {
+	    @Override
+	    public LocalDate parse(String text, Locale locale) throws ParseException {
+	      return LocalDate.parse(text, DateTimeFormatter.ISO_DATE);
+	    }
+	 
+	    @Override
+	    public String print(LocalDate object, Locale locale) {
+	      return DateTimeFormatter.ISO_DATE.format(object);
+	    }
+
+
+	  };
 	}
 }
