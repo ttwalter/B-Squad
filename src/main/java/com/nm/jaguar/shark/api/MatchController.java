@@ -7,6 +7,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,6 +18,7 @@ import com.nm.jaguar.shark.mongo.config.MongoConfiguration;
 import com.nm.jaguar.shark.mongo.data.ExistingLunchMatches;
 import com.nm.jaguar.shark.mongo.data.LunchMatch;
 
+@CrossOrigin(origins = "http://localhost:8081")
 @RestController
 public class MatchController {
 
