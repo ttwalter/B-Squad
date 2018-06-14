@@ -48,16 +48,11 @@ public class MatchController {
 		Map<LocalDate, List<LunchMatch>> matchMap = requestBody.getAvailableDays().stream()
 				.collect(Collectors.toMap(Function.identity(), d -> mongoConfig.getLunchMatchesByDate(d)));
 
-		Map<LocalDate, List<LunchMatch>> randomMatchMap = new HashMap<>();
+		Map<LocalDate, LunchMatch> randomMatchMap = new HashMap<>();
 		
 		for (LocalDate date : matchMap.keySet()) {
 			
-			List<LunchMatch> matchList = new ArrayList<>();
-
-			
-			matchList.add(matchMap.get(date).get(0));
-			
-			randomMatchMap.put(date, matchList);
+			randomMatchMap.put(date, matchMap.get(date).get(0));
 		}
 		
 		existingMatches.setMatchesByDate(randomMatchMap);

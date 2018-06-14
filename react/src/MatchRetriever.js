@@ -46,14 +46,14 @@ $(document).ready(function() {
 			success: function(data){     
 			  $("#lanID").val(data.currentUserInfo.landId);  
 			  var matches = "We have found the following matches: \n";
-			  matches += data.matchesByDate[Object.keys(data.matchesByDate)[0]][0].firstName + " ";
-			  matches += data.matchesByDate[Object.keys(data.matchesByDate)[0]][0].lastName + ": "
+			  matches += data.matchesByDate[Object.keys(data.matchesByDate)[0]].firstName + " ";
+			  matches += data.matchesByDate[Object.keys(data.matchesByDate)[0]].lastName + ": "
 			  matches += Object.keys(data.matchesByDate)[0] + " - ";
-			  matches += data.matchesByDate[Object.keys(data.matchesByDate)[0]][0].email + "\n"
-			  matches += data.matchesByDate[Object.keys(data.matchesByDate)[1]][0].firstName + " ";
-			  matches += data.matchesByDate[Object.keys(data.matchesByDate)[1]][0].lastName + ": ";
+			  matches += data.matchesByDate[Object.keys(data.matchesByDate)[0]].email + "\n"
+			  matches += data.matchesByDate[Object.keys(data.matchesByDate)[1]].firstName + " ";
+			  matches += data.matchesByDate[Object.keys(data.matchesByDate)[1]].lastName + ": ";
 			  matches += Object.keys(data.matchesByDate)[1] + " - ";
-			  matches += data.matchesByDate[Object.keys(data.matchesByDate)[1]][0].email + "\n"
+			  matches += data.matchesByDate[Object.keys(data.matchesByDate)[1]].email + "\n"
 			  var finalText = $("#matchContent").text(matches); 
 			  finalText.html(finalText.html().replace(/\n/g,'<br/>'));
 			  console.log("Data: " + data);
