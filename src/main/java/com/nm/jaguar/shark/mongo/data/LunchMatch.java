@@ -10,7 +10,7 @@ public class LunchMatch extends BaseEntity{
 	private String lastName;
 	private String email;
 	private String department;
-	private String teamName;
+	private String team;
 	private String location;
 	private int grouping;
 	private List<LocalDateTime> dates;
@@ -46,11 +46,11 @@ public class LunchMatch extends BaseEntity{
 	public void setDepartment(String department) {
 		this.department = department;
 	}
-	public String getTeamName() {
-		return teamName;
+	public String getTeam() {
+		return team;
 	}
-	public void setTeamName(String teamName) {
-		this.teamName = teamName;
+	public void setTeam(String team) {
+		this.team = team;
 	}
 	public String getLocation() {
 		return location;
@@ -82,7 +82,7 @@ public class LunchMatch extends BaseEntity{
 		result = prime * result + ((lanId == null) ? 0 : lanId.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + ((location == null) ? 0 : location.hashCode());
-		result = prime * result + ((teamName == null) ? 0 : teamName.hashCode());
+		result = prime * result + ((team == null) ? 0 : team.hashCode());
 		return result;
 	}
 	@Override
@@ -131,17 +131,17 @@ public class LunchMatch extends BaseEntity{
 				return false;
 		} else if (!location.equals(other.location))
 			return false;
-		if (teamName == null) {
-			if (other.teamName != null)
+		if (team == null) {
+			if (other.team != null)
 				return false;
-		} else if (!teamName.equals(other.teamName))
+		} else if (!team.equals(other.team))
 			return false;
 		return true;
 	}
 	@Override
 	public String toString() {
 		return "LunchMatch [lanId=" + lanId + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", department=" + department + ", teamName=" + teamName + ", location=" + location + ", grouping="
+				+ ", department=" + department + ", team=" + team + ", location=" + location + ", grouping="
 				+ grouping + ", dates=" + dates + "]";
 	}
 	

@@ -47,6 +47,12 @@ $(document).ready(function() {
 			url: url,
 			success: function(data){     
 			  $("#lanID").val(data.currentUserInfo.landId);  
+			  
+			  $("#firstName").val(data.currentUserInfo.firstName);  
+			  $("#lastName").val(data.currentUserInfo.lastName);  
+			  $("#dept").val(data.currentUserInfo.department);  
+			  $("#team").val(data.currentUserInfo.team);  
+			  
 			  var matches = "We have found the following matches: \n";
 			  matches += data.matchesByDate[Object.keys(data.matchesByDate)[0]].firstName + " ";
 			  matches += data.matchesByDate[Object.keys(data.matchesByDate)[0]].lastName + ": "
@@ -63,7 +69,7 @@ $(document).ready(function() {
 			  
 			  var finalText = $("#matchContent").text(matches); 
 			  finalText.html(finalText.html().replace(/\n/g,'<br/>'));
-			  console.log("Data: " + data);
+			  console.log("Data: " + data);  
 			}
 		 });
 		 
