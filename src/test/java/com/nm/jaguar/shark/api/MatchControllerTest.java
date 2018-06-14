@@ -41,7 +41,7 @@ public class MatchControllerTest {
 		List<LocalDate> dates = new ArrayList<>();
 		
 		dates.add(LocalDate.parse("2018-06-15"));
-		dates.add(LocalDate.parse("2018-06-16"));
+		dates.add(LocalDate.parse("2018-06-18"));
 		
 		requestBody.setAvailableDays(dates);
 		requestBody.setFirstName("Steve");
