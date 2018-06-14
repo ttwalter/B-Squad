@@ -1,6 +1,6 @@
 package com.nm.jaguar.shark.api;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 public class MatchRequest {
@@ -8,7 +8,7 @@ public class MatchRequest {
 	private String lanID;
 	private String firstName;
 	private String lastName;
-	private List<LocalDateTime> availableDays;
+	private List<LocalDate> availableDays;
 	
 	
 	public String getLanID() {
@@ -29,10 +29,10 @@ public class MatchRequest {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public List<LocalDateTime> getAvailableDays() {
+	public List<LocalDate> getAvailableDays() {
 		return availableDays;
 	}
-	public void setAvailableDays(List<LocalDateTime> availableDays) {
+	public void setAvailableDays(List<LocalDate> availableDays) {
 		this.availableDays = availableDays;
 	}
 

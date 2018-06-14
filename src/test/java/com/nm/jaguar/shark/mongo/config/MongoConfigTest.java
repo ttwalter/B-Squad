@@ -25,7 +25,7 @@ public class MongoConfigTest {
 	@Test
 	public void getMatchByLanId() {
 
-		LunchMatch match = mongoConfig.getLunchMatchByLanId("ZIS123");
+		LunchMatch match = mongoConfig.getLunchMatchByLanId("zis31");
 
 		System.out.println("getMatchByLanId: " + match);
 
@@ -35,7 +35,7 @@ public class MongoConfigTest {
 	@Test
 	public void getMatchesByDateTest() {
 
-		String dateStr = "2016-06-18";
+		String dateStr = "2018-06-15";
 		LocalDate date = LocalDate.parse(dateStr);
 
 		List<LunchMatch> matches = mongoConfig.getLunchMatchesByDate(date);
