@@ -8,7 +8,6 @@ html, body {
 	padding-top: 50px;
 }
 .col-md-1{
-	text-align: center;
         padding: 5px auto;
 	padding-top: 50px;
 }
@@ -25,4 +24,9 @@ html, body {
 .submit:hover{
 	background-color: #0E497B;
 	color: white;
+}
+img {
+    max-width: 70%;
+    height: auto;
+    width: auto\9; /* ie8 */
 }	
