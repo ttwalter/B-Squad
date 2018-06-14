@@ -25,6 +25,9 @@ $(document).ready(function() {
 		//e.stopPropagation();
 		var lanID = document.URL.substring(29, 34);
 		var url = "http://localhost:8080/FindMatches?lanID=" + lanID;
+		var date1 = document.URL.substring(document.URL.indexOf("date1") + 6, document.URL.indexOf("date1") + 16);
+		var date2 = document.URL.substring(document.URL.indexOf("date2") + 6, document.URL.indexOf("date2") + 16);
+		var date3 = document.URL.substring(document.URL.indexOf("date3") + 6, document.URL.indexOf("date3") + 16);
 		$.ajax({ 
 			headers: { 
 		        'Accept': 'application/json',
@@ -35,11 +38,10 @@ $(document).ready(function() {
 			data: 
 			JSON.stringify({
    				 "lanID": lanID,
-    			"firstName": "Bill",
-    			"lastName": "Murray",
     			"availableDays": [
-			        "2018-06-15",
-			        "2018-06-18"
+			        date1,
+			        date2,
+			        date3
     			]
 			}),
 			url: url,
@@ -54,6 +56,11 @@ $(document).ready(function() {
 			  matches += data.matchesByDate[Object.keys(data.matchesByDate)[1]].lastName + ": ";
 			  matches += Object.keys(data.matchesByDate)[1] + " - ";
 			  matches += data.matchesByDate[Object.keys(data.matchesByDate)[1]].email + "\n"
+			  matches += data.matchesByDate[Object.keys(data.matchesByDate)[2]].firstName + " ";
+			  matches += data.matchesByDate[Object.keys(data.matchesByDate)[2]].lastName + ": ";
+			  matches += Object.keys(data.matchesByDate)[2] + " - ";
+			  matches += data.matchesByDate[Object.keys(data.matchesByDate)[2]].email + "\n"
+			  
 			  var finalText = $("#matchContent").text(matches); 
 			  finalText.html(finalText.html().replace(/\n/g,'<br/>'));
 			  console.log("Data: " + data);

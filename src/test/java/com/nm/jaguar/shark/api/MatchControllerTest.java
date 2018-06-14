@@ -44,8 +44,6 @@ public class MatchControllerTest {
 		dates.add(LocalDate.parse("2018-06-18"));
 		
 		requestBody.setAvailableDays(dates);
-		requestBody.setFirstName("Steve");
-		requestBody.setLastName("Zissou");
 		requestBody.setLanID("zis31");
 		
 		ExistingLunchMatches matchMap = controller.findMatches(requestBody, "zis31");

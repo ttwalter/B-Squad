@@ -6,8 +6,6 @@ import java.util.List;
 public class MatchRequest {
 	
 	private String lanID;
-	private String firstName;
-	private String lastName;
 	private List<LocalDate> availableDays;
 	
 	
@@ -16,18 +14,6 @@ public class MatchRequest {
 	}
 	public void setLanID(String landID) {
 		this.lanID = landID;
-	}
-	public String getFirstName() {
-		return firstName;
-	}
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-	public String getLastName() {
-		return lastName;
-	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
 	}
 	public List<LocalDate> getAvailableDays() {
 		return availableDays;
