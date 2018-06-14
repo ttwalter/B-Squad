@@ -1,5 +1,6 @@
-body{
-	background: #002B49;
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
 }
 .col-md-2{
 	text-align: center;
@@ -7,7 +8,7 @@ body{
 	padding-top: 50px;
 }
 .col-md-1{
-        text-align: center;
+	text-align: center;
         padding: 5px auto;
 	padding-top: 50px;
 }
@@ -17,5 +18,11 @@ body{
 }
 .well{
 	text-align: center;
-	background-color: #EDF0F3;
+	color: #FFFFFF;
+	background: #0E497B !important;
+	margin-top: 50px;
 }
+.submit:hover{
+	background-color: #0E497B;
+	color: white;
+}	
