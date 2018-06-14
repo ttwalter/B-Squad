@@ -5,8 +5,6 @@ import org.bson.types.ObjectId;
 public abstract class BaseEntity {
 	
     protected ObjectId id;
-	
-    private Long version;
  
     public BaseEntity() {
         super();
@@ -18,14 +16,6 @@ public abstract class BaseEntity {
  
     public void setId(ObjectId id) {
         this.id = id;
-    }
- 
-    public Long getVersion() {
-        return version;
-    }
- 
-    public void setVersion(Long version) {
-        this.version = version;
     }
 
 }
