@@ -6,12 +6,15 @@ import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
 import org.bson.codecs.configuration.CodecProvider;
 import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.codecs.pojo.PojoCodecProvider;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientSettings;
+import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.nm.jaguar.shark.mongo.data.LunchMatch;
 import com.nm.jaguar.shark.util.SimpleMongo;
 
 @Configuration
@@ -20,11 +23,12 @@ public class MongoBean {
 	private final String HOST = "localhost";
 	private final int PORT = 27017;
 	private final String DATABASE = "fusion";
+	private final String COLLECTION = "lunch";
 
 	private MongoClient mongoClient = new MongoClient(HOST, PORT);
 
 	@Bean(name = "mongoDatabase")
-	public MongoDatabase mongoClient() {
+	public MongoDatabase mongoDatabase() {
 
 		// Build provider and registry to convert Bson to Pojo
 		CodecProvider pojoCodecProvider = PojoCodecProvider.builder().automatic(true).build();
@@ -36,7 +40,12 @@ public class MongoBean {
 	}
 
 	@Bean(name = "simpleMongo")
-	public SimpleMongo simpleMongo() {
-		return new SimpleMongo();
+	public SimpleMongo<LunchMatch> simpleMongo() {
+		return new SimpleMongo<>();
+	}
+
+	@Bean(name = "mongoCollection")
+	public MongoCollection<LunchMatch> mongoCollection(@Autowired MongoDatabase mongoDatabase) {
+		return mongoDatabase.getCollection(COLLECTION, LunchMatch.class);
 	}
 }

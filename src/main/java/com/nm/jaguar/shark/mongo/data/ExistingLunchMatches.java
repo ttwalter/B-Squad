@@ -1,13 +1,13 @@
 package com.nm.jaguar.shark.mongo.data;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
 public class ExistingLunchMatches {
 	
 	private String lanID;
-	private Map<LocalDateTime, List<LunchMatch>> matchesByDate;
+	private Map<LocalDate, List<LunchMatch>> matchesByDate;
 	private LunchMatch currentUserInfo;
 	
 	
@@ -17,10 +17,10 @@ public class ExistingLunchMatches {
 	public void setLanID(String lanID) {
 		this.lanID = lanID;
 	}
-	public Map<LocalDateTime, List<LunchMatch>> getMatchesByDate() {
+	public Map<LocalDate, List<LunchMatch>> getMatchesByDate() {
 		return matchesByDate;
 	}
-	public void setMatchesByDate(Map<LocalDateTime, List<LunchMatch>> matchesByDate) {
+	public void setMatchesByDate(Map<LocalDate, List<LunchMatch>> matchesByDate) {
 		this.matchesByDate = matchesByDate;
 	} 
 	public LunchMatch getCurrentUserInfo() {
